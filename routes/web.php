@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return phpinfo();
+    return "alo";
 });
 
 Route::get('abc', function () {
@@ -44,6 +44,3 @@ route::post('form/data',['as'=>'send',function (){
 route::get('dk',function(){
     return View('dangky');
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
