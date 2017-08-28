@@ -1,8 +1,14 @@
-<!DOCTYPE html>
-<html lang="vi">
+@if (count($errors) > 0)
 
-<meta charset="utf-8" />
-<form action="" method="POST" name="frmThem">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+@endif
+<form action="{!! route('postDangky') !!}" method="POST" name="frmThem">
+<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 <table>
     <tr>
         <td>Môn H?c</td>

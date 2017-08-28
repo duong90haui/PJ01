@@ -41,6 +41,7 @@ route::post('form/data',['as'=>'send',function (){
     return "OK";
 }]);
 
-route::get('dk',function(){
+route::get('form/dk',function(){
     return View('dangky');
-});
+    });
+route::post('form/dk-thanh-vien',['as'=>'postDangky','uses'=>'DangkyController@them']);
