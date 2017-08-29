@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Http\Request;
+use App\Http\Requests\dangky_request;
 
-Route::get('/', function () {
-    return "alo";
+Route::get('/', function (dangky_request $request) {
+    echo '$request';
 });
-
 Route::get('abc', function () {
         $hoten="Duong";
         return view('demo_view',compact('hoten'));
@@ -45,3 +46,4 @@ route::get('form/dk',function(){
     return View('dangky');
     });
 route::post('form/dk-thanh-vien',['as'=>'postDangky','uses'=>'DangkyController@them']);
+

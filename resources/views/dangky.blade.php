@@ -1,31 +1,47 @@
-@if (count($errors) > 0)
 
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+<!DOCTYPE html>
+<html>
+<body>
 
-@endif
-<form action="{!! route('postDangky') !!}" method="POST" name="frmThem">
+<form enctype="multipart/form-data" action="{!! route('postDangky') !!}" method="POST" name="frmThem"  >
+
 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 <table>
     <tr>
-        <td>Môn H?c</td>
-        <td><input type="text" name="txMonHoc" /></td>
-    </tr>
-    <tr>
-        <td>Giá Ti?n</td>
-        <td><input type="text" name="txGiaTien" /></td>
-    </tr>
-    <tr>
-        <td>Gi?ng Viên</td>
-        <td><input type="text" name="txGiangVien" /></td>
-    </tr>
-    <tr>
-        <td>
-        <input type="submit" name="btnGui" value="Thêm" />
+        <td>MÃ´n H?c</td>
+        <td><input type="text" name="txtMonHoc" />
+        {!! $errors->first('txtMonHoc') !!}
         </td>
     </tr>
+    
+    <tr>
+        <td>GiÃ¡ Ti?n</td>
+        <td><input type="text" name="txtGiaTien" />
+        {!! $errors->first('txtGiaTien') !!}
+        </td>
+    </tr>
+    
+    <tr>
+        <td>Gi?ng ViÃªn</td>
+        <td><input type="text" name="txtGiangVien" />
+        {!! $errors->first('txtGiangVien') !!}
+        </td>
+    </tr>
+    
+  
+    <tr>
+        <td>Hinh anh</td>
+        <td><input type="file" name="fImages" />
+       
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+        <input type="submit" name="btnGui" value="ThÃªm" />
+        </td>
+   </tr>
 </table>
 </form>
+</body>
+</html>
