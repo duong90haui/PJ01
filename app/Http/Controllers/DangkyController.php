@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\dangky;
 use Illuminate\Http\Request;
 use App\Http\Requests\dangky_request;
-use Validator;
 use Illuminate\Support\Facades\Storage;
 class DangkyController extends Controller
 {

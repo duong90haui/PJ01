@@ -27,16 +27,21 @@ class dangky_request extends FormRequest
             'txtMonHoc'=> 'required|unique:dangky_tb,monhoc',
             'txtGiaTien'=> 'required',
             'txtGiangVien'=> 'required',
-            /*'fImage'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'*/
+            'fImages'=>'required|image|max:2048'
+            /*
+            |mimes:jpeg,png,jpg,gif,svg
+            */
         ];
     }
     public function messages (){
         return [
-            'txtMonHoc.required'=> 'Vui long nhap ten mon hoc',
-            'txtGiaTien.required'=> 'Vui long nhap gia tien',
-            'txtGiangVien.required'=> 'Vui long nhap ten giang vien',
-            'txtMonHoc.unique'=> 'Ten khoa hoc da ton tai',
-            
+            'txtMonHoc.required'=> 'Vui lòng nhập tên môn học',
+            'txtGiaTien.required'=> 'Vui lòng nhập giá tiền',
+            'txtGiangVien.required'=> 'Vui lòng nhập tên giảng viên',
+            'txtMonHoc.unique'=> 'Tên khóa học đã tồn tại',
+            'fImages.required'=> 'Chọn ảnh',
+            'fImages.image'=> 'Sai định dạng',
+            'fImages.max'=> 'Ảnh có kích thước quá lớn'
         ];
     }
 }

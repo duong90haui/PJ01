@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\Auth;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class RegisterController_new extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -30,45 +32,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-   protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:1',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:7|confirmed',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
+   
     
 /** Mau register()*/
     
@@ -79,9 +43,11 @@ class RegisterController extends Controller
         $thanhvien= new User ;
         $thanhvien->name= $request->name;
         $thanhvien->email=$request->email;
-        $thanhvien->password=$request->password;
+        $thanhvien->password=Hash::make($request->password);
         $thanhvien->remember_token=$request->_token;
         $thanhvien->save();
-    } 
-}
+        return redirect('authentication/getRegister');
+    }  
     
+}
+   
